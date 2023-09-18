@@ -1,7 +1,6 @@
 # ======================================================================================================================================================================================
 # Meng-import module yang dibutuhkan oleh program
 import os
-import re
 import string
 import getpass
 from tabulate import tabulate
@@ -401,7 +400,6 @@ def hasil_pencarian(buku_ditemukan):
 # Fungsi untuk menambahkan buku
 def create_buku():
 	global database_buku
-	global data_kategori
 	header_admin()
 	print("""
 1. Input data buku
@@ -594,13 +592,25 @@ Pilih kolom yang ingin diperbarui :
 									while True:
 										new_isbn = input("Masukkan nomor ISBN baru (13 digit angka yang diawali dengan '978') : ")
 										if len(new_isbn) == 13 and new_isbn.isdigit() and new_isbn.startswith("978") and new_isbn not in [str(buku["ISBN"]) for buku in database_buku]:
-											database_buku[index]["ISBN"] = int(new_isbn)
-											print(Style.BRIGHT + Fore.CYAN + "\nISBN berhasil diperbarui. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
-											hapus_colorama()
-											getpass.getpass("")
 											hapus_layar()
-											update_buku()
-											# break
+											while True:
+												konfirmasi_update = input(Style.BRIGHT + Fore.YELLOW + "Apakah Anda yakin ingin menyimpan perubahan tersebut [Y/N]? ").upper()
+												hapus_colorama()
+												if konfirmasi_update == "Y":
+													database_buku[index]["ISBN"] = int(new_isbn)
+													print(Style.BRIGHT + Fore.CYAN + "ISBN berhasil diperbarui. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+													hapus_colorama()
+													getpass.getpass("")
+													hapus_layar()
+													update_buku()
+												elif konfirmasi_update == "N":
+													print(Style.BRIGHT + Fore.RED + "Perubahan tidak disimpan. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+													hapus_colorama()
+													getpass.getpass("")
+													hapus_layar()
+													update_buku()
+												else:
+													notifikasi_salah_input()
 										else:
 											print(Style.BRIGHT + Fore.RED + f"Nomor ISBN '{new_isbn}' tidak valid atau sudah tersedia di dalam database. Pastikan nomor ISBN berisi 13 digit angka dan diawali dengan '978'.")
 											hapus_colorama()
@@ -614,14 +624,29 @@ Syarat penamaan Judul :
 - Nama Judul tidak boleh birisi HANYA tanda baca""")
 									hapus_colorama()
 									while True:
-
 										new_judul = input("Masukkan Judul baru : ")
 										new_judul = " ".join(new_judul.split())
 										new_judul = new_judul.strip()
 										if new_judul and not all(char in string.punctuation or char.isspace() for char in new_judul):
-											database_buku[index]["Judul"] = new_judul
-											print(Style.BRIGHT + Fore.CYAN + "Judul berhasil diperbarui.")
-											hapus_colorama()
+											hapus_layar()
+											while True:
+												konfirmasi_update = input(Style.BRIGHT + Fore.YELLOW + "Apakah Anda yakin ingin menyimpan perubahan tersebut [Y/N]? ").upper()
+												hapus_colorama()
+												if konfirmasi_update == "Y":
+													database_buku[index]["Judul"] = new_judul
+													print(Style.BRIGHT + Fore.CYAN + "Judul berhasil diperbarui. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+													hapus_colorama()
+													getpass.getpass("")
+													hapus_layar()
+													update_buku()
+												elif konfirmasi_update == "N":
+													print(Style.BRIGHT + Fore.RED + "Perubahan tidak disimpan. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+													hapus_colorama()
+													getpass.getpass("")
+													hapus_layar()
+													update_buku()
+												else:
+													notifikasi_salah_input()
 										else:
 											print(Style.BRIGHT + Fore.RED + "Penamaan Judul tidak sesuai dengan syarat yang telah ditentukan.")
 											hapus_colorama()
@@ -634,6 +659,19 @@ Syarat penamaan Judul :
 								
 								# Update Kategori
 								elif pilihan_kolom == "4":
+									data_kategori = [
+                                        "Biography",
+                                        "Business & Economy",
+                                        "Children's Books",
+                                        "Comic & Novel",
+                                        "Fantasy",
+                                        "Humor",
+                                        "Literature",
+                                        "Mystery",
+                                        "Psychology",
+                                        "Romance",
+                                        "Self Improvement"
+                                    ]
 									hapus_layar()
 									print("Kategori yang tersedia :")
 									for i, jenis_kategori in enumerate(data_kategori, start = 1):
@@ -643,11 +681,26 @@ Syarat penamaan Judul :
 										try:
 											pilihan_kategori = int(input("Pilih Kategori baru [1-11] : "))
 											if 1 <= pilihan_kategori <= len(data_kategori):
-												new_kategori = data_kategori[pilihan_kategori - 1]
-												database_buku[index]["Kategori"] = new_kategori
-												print(Style.BRIGHT + Fore.CYAN + "Kategori berhasil diperbarui.")
-												hapus_colorama()
-												break
+												hapus_layar()
+												while True:
+													konfirmasi_update = input(Style.BRIGHT + Fore.YELLOW + "Apakah Anda yakin ingin menyimpan perubahan tersebut [Y/N]? ").upper()
+													hapus_colorama()
+													if konfirmasi_update == "Y":
+														new_kategori = data_kategori[pilihan_kategori - 1]
+														database_buku[index]["Kategori"] = new_kategori
+														print(Style.BRIGHT + Fore.CYAN + "Kategori berhasil diperbarui. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+														hapus_colorama()
+														getpass.getpass("")
+														hapus_layar()
+														update_buku()
+													elif konfirmasi_update == "N":
+														print(Style.BRIGHT + Fore.RED + "Perubahan tidak disimpan. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+														hapus_colorama()
+														getpass.getpass("")
+														hapus_layar()
+														update_buku()
+													else:
+														notifikasi_salah_input()
 											else:
 												notifikasi_salah_input()
 										except:
@@ -660,10 +713,25 @@ Syarat penamaan Judul :
 										try:
 											new_stok = int(input("Masukkan Stok baru : "))
 											if new_stok > 0:
-												database_buku[index]["Stok"] = new_stok
-												print(Style.BRIGHT + Fore.CYAN + "Stok berhasil diperbarui.")
-												hapus_colorama()
-												break
+												hapus_layar()
+												while True:
+													konfirmasi_update = input(Style.BRIGHT + Fore.YELLOW + "Apakah Anda yakin ingin menyimpan perubahan tersebut [Y/N]? ").upper()
+													hapus_colorama()
+													if konfirmasi_update == "Y":
+														database_buku[index]["Stok"] = new_stok
+														print(Style.BRIGHT + Fore.CYAN + "Stok berhasil diperbarui. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+														hapus_colorama()
+														getpass.getpass("")
+														hapus_layar()
+														update_buku()
+													elif konfirmasi_update == "N":
+														print(Style.BRIGHT + Fore.RED + "Perubahan tidak disimpan. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+														hapus_colorama()
+														getpass.getpass("")
+														hapus_layar()
+														update_buku()
+													else:
+														notifikasi_salah_input()
 											else:
 												print(Style.BRIGHT + Fore.RED + "Stok harus lebih besar daripada 0 (Nol).")
 												hapus_colorama()
@@ -672,32 +740,6 @@ Syarat penamaan Judul :
 											hapus_colorama()
 								else:
 									notifikasi_salah_input()
-
-								# # Menampilkan data update yang telah diinputkan untuk divalidasi
-								# buku_update = {
-								# 	"ISBN" : int(new_isbn),
-								# 	"Judul" : new_judul,
-								# 	"Penulis" : new_penulis,
-								# 	"Kategori" : new_kategori,
-								# 	"Stok" : new_stok
-								# }
-								# hapus_layar()
-								# print("Berikut adalah hasil update dari data buku yang akan diperbarui :\n")
-								# print(tabulate([buku_update], headers = "keys", tablefmt = "fancy_outline", numalign = "center"))
-								# print("")
-							while True:
-								konfirmasi_update = input(Style.BRIGHT + Fore.YELLOW + "Apakah Anda yakin ingin menyimpan perubahan di atas ke dalam database [Y/N]? ").upper()
-								hapus_colorama()
-								if konfirmasi_update == "Y":
-									print("Data buku berhasil diperbarui.")
-									break
-								elif konfirmasi_update == "N":
-									print("Perubahan tidak disimpan.")
-									break
-								else:
-									notifikasi_salah_input()
-							hapus_layar()
-							update_buku()
 						elif konfirmasi == "N":
 							hapus_layar()
 							update_buku()
@@ -746,11 +788,9 @@ def delete_buku():
 								getpass.getpass("")
 								hapus_layar()
 								delete_buku()
-								# return
 							elif konfirmasi_hapus_buku == "N":
 								hapus_layar()
 								delete_buku()
-								# return
 							else:
 								notifikasi_salah_input()
 				if not found:
@@ -780,11 +820,9 @@ def delete_buku():
 						getpass.getpass("")
 						hapus_layar()
 						delete_buku()
-						# return
 					elif konfirmasi_hapus_semua == "N":
 						hapus_layar()
 						delete_buku()
-						# return
 					else:
 						notifikasi_salah_input()
 		elif pilihan_menu_delete == "3":
@@ -792,11 +830,6 @@ def delete_buku():
 			menu_admin()
 		else:
 			notifikasi_salah_input()
-
-# ======================================================================================================================================================================================
-def borrow_buku():
-	global database_buku
-	pass
 
 # ======================================================================================================================================================================================
 # Fungsi untuk menampilkan Menu Utama
@@ -881,23 +914,19 @@ def menu_user():
 	header_user()
 	print("""
 1. Daftar buku
-2. Pinjam buku
-3. Kembali ke Menu Utama
-4. Exit
+2. Kembali ke Menu Utama
+3. Exit
 	""")
 
 	while True:
-		pilihan_menu_user= input("Masukkan pilihan Anda [1-4] : ")
+		pilihan_menu_user= input("Masukkan pilihan Anda [1-3] : ")
 		if pilihan_menu_user == "1":
 			hapus_layar()
 			read_buku()
 		elif pilihan_menu_user == "2":
 			hapus_layar()
-			borrow_buku()
-		elif pilihan_menu_user == "3":
-			hapus_layar()
 			menu_utama()
-		elif pilihan_menu_user == "4":
+		elif pilihan_menu_user == "3":
 			hapus_layar()
 			keluar()
 		else:
