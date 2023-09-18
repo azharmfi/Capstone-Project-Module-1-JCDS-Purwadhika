@@ -1,3 +1,4 @@
+# ===================================================================================== AZ-LIBRARY =====================================================================================
 # ======================================================================================================================================================================================
 # Meng-import module yang dibutuhkan oleh program
 import os
@@ -443,23 +444,18 @@ Syarat penamaan Penulis :
 - Nama Penulis tidak boleh kosong
 - Nama Penulis tidak boleh berisi bilangan bulat
 - Nama Penulis tidak boleh birisi HANYA tanda baca
-- Nama Penulis tidak boleh mengandung tanda baca selain titik (.)
-- Tanda titik hanya diperbolehkan jika menyatu dengan satu huruf alfabet sebagai penyingkat nama""")
+- Nama Penulis tidak boleh mengandung tanda baca, termasuk titik""")
 			hapus_colorama()
 			while True:
 				penulis = input("Masukkan Penulis buku : ")
 				penulis = " ".join(penulis.split())
 				penulis = penulis.strip()
 				penulis = penulis.title()
-				if not penulis or any(char.isdigit() for char in penulis) or (
-					any(char in string.punctuation for char in penulis) and
-					not (penulis.startswith('.') or penulis.endswith('.') or (' .' not in penulis and penulis.count('.') <= 1))
-				):
-				# if not penulis or any(char.isdigit() for char in penulis) or any(char in string.punctuation for char in penulis):
+				if penulis and not any(char.isdigit() for char in penulis) and all(char.isalpha() or char.isspace() for char in penulis):
+					break
+				else:
 					print(Style.BRIGHT + Fore.RED + "Penamaan Penulis tidak sesuai dengan syarat yang telah ditentukan.")
 					hapus_colorama()
-				else:
-					break
 			
 			# Input Kategori
 			data_kategori = [
@@ -653,9 +649,42 @@ Syarat penamaan Judul :
 								
 								# Update Penulis
 								elif pilihan_kolom == "3":
-									new_penulis = input("Masukkan Penulis baru : ")
-									database_buku[index]["Penulis"] = new_penulis
-									print("Penulis berhasil diperbarui.")
+									hapus_layar()
+									print(Style.BRIGHT + Fore.YELLOW + """
+Syarat penamaan Penulis :
+- Nama Penulis tidak boleh kosong
+- Nama Penulis tidak boleh berisi bilangan bulat
+- Nama Penulis tidak boleh birisi HANYA tanda baca
+- Nama Penulis tidak boleh mengandung tanda baca, termasuk titik""")
+									hapus_colorama()
+									while True:
+										new_penulis = input("Masukkan Penulis baru : ")
+										new_penulis = " ".join(new_penulis.split())
+										new_penulis = new_penulis.strip()
+										new_penulis = new_penulis.title()
+										if new_penulis and not any(char.isdigit() for char in new_penulis) and all(char.isalpha() or char.isspace() for char in new_penulis):
+											hapus_layar()
+											while True:
+												konfirmasi_update = input(Style.BRIGHT + Fore.YELLOW + "Apakah Anda yakin ingin menyimpan perubahan tersebut [Y/N]? ").upper()
+												hapus_colorama()
+												if konfirmasi_update == "Y":
+													database_buku[index]["Penulis"] = new_penulis
+													print(Style.BRIGHT + Fore.CYAN + "Penulis berhasil diperbarui. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+													hapus_colorama()
+													getpass.getpass("")
+													hapus_layar()
+													update_buku()
+												elif konfirmasi_update == "N":
+													print(Style.BRIGHT + Fore.RED + "Perubahan tidak disimpan. Tekan \"Enter\" untuk kembali ke menu sebelumnya.")
+													hapus_colorama()
+													getpass.getpass("")
+													hapus_layar()
+													update_buku()
+												else:
+													notifikasi_salah_input()
+										else:
+											print(Style.BRIGHT + Fore.RED + "Penamaan Penulis tidak sesuai dengan syarat yang telah ditentukan.")
+											hapus_colorama()
 								
 								# Update Kategori
 								elif pilihan_kolom == "4":
