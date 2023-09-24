@@ -8,14 +8,14 @@ Aplikasi AZ-LIBRARY adalah proyek Python yang dikembangkan oleh Azhar Muhammad F
 
 ### Menu 1 - _Menu Utama_
 
-Menu ini merupakan menu yang akan ditampilkan di awal program AZ-LIBRARY. Di dalam menu ini, terdapat 2 pilihan yang dapat dipilih untuk bisa mengakses segala fitur yang disediakan dalam program. Kedua pilihan tersebut yaitu:
+Menu ini merupakan menu yang akan ditampilkan di awal program AZ-LIBRARY. Di dalam menu ini, terdapat 2 pilihan yang dapat dipilih untuk bisa mengakses segala fitur yang disediakan dalam program. Kedua pilihan tersebut yaitu :
 
-**1. _Menu Admin_:** Untuk mengakses segala fitur yang tersedia pada _Menu Admin_\n
-**2. _Menu User_:** Untuk mengakses segala fitur yang tersedia pada _Menu User_
+**1. _Menu Admin_ :** Untuk mengakses segala fitur yang tersedia pada _Menu Admin_
+**2. _Menu User_ :** Untuk mengakses segala fitur yang tersedia pada _Menu User_
 
 ### Menu 2 - _Menu Admin_
 
-Menu ini diperuntukan kepada pemilik AZ-LIBRARY (_Admin_) sebagai _platform_ untuk CRUD (_Create, Read, Update, Delete_) data buku yang memang seharusnya hanya bisa diakses oleh _Admin_ saja. Di dalam menu ini terdapat 4 fitur yang dapat dipilih. Fitur tersebut adalah:
+Menu ini diperuntukan kepada pemilik AZ-LIBRARY (_Admin_) sebagai _platform_ untuk CRUD (_Create, Read, Update, Delete_) data buku yang memang seharusnya hanya bisa diakses oleh _Admin_ saja. Di dalam menu ini terdapat 4 fitur yang dapat dipilih. Fitur tersebut adalah :
 
 ### Menu 3 - _Menu User_
 
