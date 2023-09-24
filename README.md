@@ -28,6 +28,6 @@ Menu ini diperuntukan kepada pelanggan atau peminjam (_User_) dari AZ-LIBRARY se
 
 ## Kontribusi
 
-Anda dapat berkontribusi dalam pengembangan aplikasi ini dengan mengirimkan pull request. Jika Anda memiliki pertanyaan atau perlu bantuan lebih lanjut, jangan ragu untuk menghubungi saya melalui GitHub.
+Anda dapat berkontribusi dalam pengembangan aplikasi ini dengan mengirimkan _Pull Request_. Jika Anda memiliki pertanyaan atau perlu bantuan lebih lanjut, jangan ragu untuk menghubungi saya melalui GitHub.
 
 Semoga aplikasi AZ-LIBRARY ini bermanfaat dan sukses dalam pengembangannya!
