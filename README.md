@@ -9,7 +9,9 @@ Aplikasi AZ-LIBRARY adalah proyek Python yang dikembangkan oleh Azhar Muhammad F
 ### Menu 1 - Menu Utama
 
 Menu ini merupakan menu yang akan ditampilkan di awal program AZ-LIBRARY. Di dalam menu ini, terdapat 2 pilihan yang dapat dipilih untuk bisa mengakses segala fitur yang disediakan dalam program. Kedua pilihan tersebut yaitu:
+
 **1. Menu Admin:** Untuk mengakses segala fitur yang tersedia pada Menu Admin
+
 **2. Menu User:** Untuk mengakses segala fitur yang tersedia pada Menu User
 
 ### Menu 2 - Menu Admin
