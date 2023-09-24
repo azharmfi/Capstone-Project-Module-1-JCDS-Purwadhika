@@ -2,7 +2,7 @@
 
 ## Tentang Project
 
-Aplikasi AZ-LIBRARY adalah proyek Python yang dikembangkan oleh Azhar Muhammad Fikri Fuadi sebagai bagian dari Capstone Project Module 1 di JCDS Purwadhika Bandung. Aplikasi ini memberikan kemampuan untuk mengelola data buku dengan fitur CRUD (_Create, Read, Update, Delete_), serta beberapa fitur tambahan seperti pencarian (_searching_), penyaringan (_filter_), dan pengurutan (_sorting_).
+Aplikasi AZ-LIBRARY adalah proyek Python yang dikembangkan oleh Azhar Muhammad Fikri Fuadi sebagai bagian dari Capstone Project Module 1 di JCDS Purwadhika Bandung. Aplikasi ini memberikan kemampuan untuk mengelola data buku dengan fitur CRUD (_Create, Read, Update, Delete_), serta beberapa fitur tambahan seperti laman _Admin_, pencarian (_searching_), penyaringan (_filter_), dan pengurutan (_sorting_).
 
 ## Fitur-Fitur Utama
 
@@ -15,16 +15,16 @@ Menu ini merupakan menu yang akan ditampilkan di awal program AZ-LIBRARY. Di dal
 
 ### Menu 2 - _Menu Admin_
 
-Menu ini diperuntukan kepada pemilik AZ-LIBRARY (_Admin_) sebagai _platform_ untuk CRUD (_Create, Read, Update, Delete_) data buku yang memang seharusnya hanya bisa diakses oleh _Admin_ saja. Di dalam menu ini terdapat 4 fitur yang dapat dipilih. Fitur tersebut adalah :
+Menu ini diperuntukan kepada pemilik AZ-LIBRARY (_Admin_) sebagai _platform_ untuk CRUD (_Create, Read, Update, Delete_) data buku yang memang seharusnya hanya bisa diakses oleh _Admin_ saja. Di dalam menu ini terdapat 4 fitur utama yang dapat dipilih. Fitur-fitur tersebut yaitu :
 
-**1. Daftar Buku :**
-**2. Tambah Buku :**
-**3. Perbarui Buku :**
-**4. Hapus Buku :**
+**1. Daftar Buku :** <br>
+**2. Tambah Buku :** <br>
+**3. Perbarui Buku :** <br>
+**4. Hapus Buku :** 
 
 ### Menu 3 - _Menu User_
 
-Menu ini diperuntukan kepada pelanggan atau peminjam (_User_) dari AZ-LIBRARY sebagai _platform_ untuk meminjam buku. Di dalam menu ini hanya terdapat 1 fitur yaitu _Read_, dimana pelanggan dapat melihat buku-buku yang sedang tersedia di perpustakaan AZ-LIBRARY. _User_ atau pelanggan hanya bisa memesannya secara manual dan tidak bisa melalui sistem.
+Menu ini diperuntukan kepada pelanggan atau peminjam (_User_) dari AZ-LIBRARY sebagai _platform_ untuk meminjam buku. Di dalam menu ini hanya terdapat 1 fitur utama yaitu _Read_, dimana pelanggan dapat melihat buku-buku yang sedang tersedia di perpustakaan AZ-LIBRARY untuk dipinjam oleh _User_ yang hanya bisa dilakukan secara manual atau tidak bisa melalui sistem.
 
 ## Kontribusi
 
