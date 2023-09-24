@@ -17,6 +17,11 @@ Menu ini merupakan menu yang akan ditampilkan di awal program AZ-LIBRARY. Di dal
 
 Menu ini diperuntukan kepada pemilik AZ-LIBRARY (_Admin_) sebagai _platform_ untuk CRUD (_Create, Read, Update, Delete_) data buku yang memang seharusnya hanya bisa diakses oleh _Admin_ saja. Di dalam menu ini terdapat 4 fitur yang dapat dipilih. Fitur tersebut adalah :
 
+**1. Daftar Buku :**
+**2. Tambah Buku :**
+**3. Perbarui Buku :**
+**4. Hapus Buku :**
+
 ### Menu 3 - _Menu User_
 
 Menu ini diperuntukan kepada pelanggan atau peminjam (_User_) dari AZ-LIBRARY sebagai _platform_ untuk meminjam buku. Di dalam menu ini hanya terdapat 1 fitur yaitu _Read_, dimana pelanggan dapat melihat buku-buku yang sedang tersedia di perpustakaan AZ-LIBRARY. _User_ atau pelanggan hanya bisa memesannya secara manual dan tidak bisa melalui sistem.
